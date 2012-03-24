@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [[ $# -lt 2 ]]; then
+    echo "usage: $0 list_file output_dir"
+    exit 1
+fi
+
+wget --input-file=$1 --tries=5 --continue --no-directories --directory-prefix=$2

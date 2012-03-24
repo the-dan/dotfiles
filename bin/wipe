@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if [[ $# -lt 1 ]]; then
+   echo "usage: $0 <filename> [<wipes_count>]"
+   exit -1
+fi
+
+FILENAME=$1
+
+if [[ ! -f "$FILENAME" ]]; then
+   echo "$FILENAME is not a file"
+   exit -2
+fi
+
+FILESIZE=$(stat -f %z "$FILENAME")
+echo "Size of $FILENAME = $FILESIZE bytes"
+
+COUNT=5
+
+if [[ -n $2 ]]; then
+   COUNT=$2
+fi
+
+for (( i=0; i<$COUNT; i++ )); do
+    dd if=/dev/urandom of="$FILENAME" bs=1 count=$FILESIZE
+done;
