@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#echo $#
+
+#echo $1 $2
+
+if [[ $# -lt 2 ]]; then
+	echo "usage: $0 <host> <port>"
+	exit
+fi
+
+openssl s_client -connect $1:$2

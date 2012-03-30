@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# -v verbose
+# -P0 no ping
+# -sS TCPSYN
+# -O OS detection
+# -n don't resolve dns name
+
+# Other useful:
+# -sA ack
+# -sW windows
+# -sN Null
+# -sF FIN
+# -sX Xmas
+# -p22-1234 range
+# 
+
+nmap -v -P0 -sS -O -n $1

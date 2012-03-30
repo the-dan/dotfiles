@@ -1,0 +1,3 @@
+#!/bin/bash
+
+awk '/Full thread dump/ { a = 1} // && a { print $0 } /No shared spaces/ { a = 0 }'
