@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if [[ "$1" == "-h" ]]; then
+   echo "usage: $0 [suspend] [port] [server]"
+   exit 1
+fi
+
+PORT=8001
+SUSPEND=n
+SERVER=y
+
+if [[ -n "$1" ]]; then
+   SUSPEND=$1
+   shift
+fi
+
+if [[ -n "$1" ]]; then
+   PORT=$1
+   shift
+fi
+
+if [[ -n "$1" ]]; then
+   SERVER=$1
+   shift
+fi   
+
+
+java -Xdebug -Xrunjdwp:transport=dt_socket,address=$PORT,server=$SERVER,suspend=$SUSPEND $@
