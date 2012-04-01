@@ -1,0 +1,4 @@
+alias ll='ls -lh --color=tty'
+alias l.='ls -dh .* --color=tty'
+alias ls='ls -h --color=tty'
+
