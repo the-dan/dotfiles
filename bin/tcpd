@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# writes dump into file and displays it to stdout
+
+# -U write each packet to file when it is saved, rather than wait till buffer fills
+# -l make stdout line buffered
+# -r read packets from file
+
+FILE=$1
+
+shift
+
+tcpdump -U -s 0 -w - $* |tee $FILE | tcpdump -lnr -
