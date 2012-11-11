@@ -1,11 +1,11 @@
 # settings homes, some of them we'll put into path
-if [[ -x .paths ]]; then
-	. .paths
+if [[ -x $HOME/.paths ]]; then
+	. $HOME/.paths
 fi
 
 # apply local profile
-if [[ -x .profile.local ]]; then
-    . .profile.local
+if [[ -x $HOME/.profile.local ]]; then
+    . $HOME/.profile.local
 fi
 
 
@@ -51,7 +51,20 @@ alias cgrep='grep -A 3 -B 3'
 
 shopt -s histappend
 
-export PS1="\n\[\e[32;1m\](\[\e[37;1m\]\u\[\e[32;1m\])-(\[\e[37;1m\]jobs:\j\[\e[32;1m\])-(\[\e[37;1m\]\w\[\e[32;1m\])\n(\[\[\e[37;1m\]! \!\[\e[32;1m\])-> \[\e[0m\]"
+RED="\e[31m\]"
+OFF="\e[0m\]"
+FAILED_COMMAND_PS="\`RC=\$?; if [ \$RC != 0 ]; then echo -$RED\$RC$OFF; fi\`"
+
+export PS1="\n\[\e[32;1m\](\[\e[37;1m\]\u@\h\[\e[32;1m\])-(\[\e[37;1m\]jobs:\j\[\e[32;1m\])-(\[\e[37;1m\]\W\[\e[32;1m\])-(\[\e[37;1m\]\A\[\e[32;1m\])$FAILED_COMMAND_PS\n(\[\[\e[37;1m\]! \!\[\e[32;1m\])-> \[\e[0m\]"
 
 export PATH=$HOME/bin:$CURL_HOME:$SVN_HOME:$NSS_HOME/bin:$JAVA_HOME/bin:$GROOVY_HOME/bin:$PATH
 
+if [ -x /usr/bin/emacs ]; then
+    export EDITOR=/usr/bin/emacs
+elif [ -x /usr/bin/vi ]; then
+    export EDITOR=/usr/bin/vi
+else
+    export EDITOR=/usr/bin/nano
+fi
+
+alias e='$EDITOR'
