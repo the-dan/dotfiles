@@ -9,12 +9,16 @@ if [[ -x $HOME/.profile.local ]]; then
 fi
 
 
+SSH_DIR="$HOME/.ssh"
 SSH_ENV="$HOME/.ssh/environment"
 
 function start_agent {
 	echo "Initializing new SSH agent..."
-	mkdir -p "${SSH_ENV}"
-	chmod -R 600 "${SSH_ENV}"
+	if [ ! -d "${SSH_DIR}" ]; then
+	    mkdir -p "${SSH_DIR}"
+            chmod -R 700 "${SSH_DIR}"    	    
+	fi
+
 	/usr/bin/ssh-agent -t 8h | sed 's/^echo/#echo/' > "${SSH_ENV}"
 	echo succeeded
 	chmod 600 "${SSH_ENV}"
