@@ -66,6 +66,10 @@ export PS1="\n\[\e[32;1m\](\[\e[37;1m\]\u@\h\[\e[32;1m\])-(\[\e[37;1m\]jobs:\j\[
 
 export PATH=$HOME/bin:$CURL_HOME:$SVN_HOME:$NSS_HOME/bin:$JAVA_HOME/bin:$GROOVY_HOME/bin:$PATH
 
+if [ -d "${HOME}/bin.local" ]; then
+    export PATH=$HOME/bin.local:$PATH
+fi
+
 if [ -x /usr/bin/emacs ]; then
     export EDITOR=/usr/bin/emacs
 elif [ -x /usr/bin/vi ]; then
