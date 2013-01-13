@@ -20,7 +20,7 @@ parser.add_option("-d" ,"--dry-run", dest="dry", default=False, action="store_tr
 (options, args) = parser.parse_args()
 
 # Skip these files (uses fnmatch matching)
-skip_list = ['linkdotfiles', 'README.markdown', ".git", "3rd-party", "bin"]
+skip_list = ['linkdotfiles', 'README.markdown', ".git", "3rd-party"]
 cwd = os.path.dirname(os.path.realpath(__file__))
 cwd = os.path.realpath(cwd)
 homedir = os.path.expanduser('~')
