@@ -26,6 +26,12 @@ cwd = os.path.realpath(cwd)
 homedir = os.path.expanduser('~')
 files = os.listdir(cwd)
 
+def create_symlink(src, dst):
+	if os.environ['TERM'] == 'cygwin':
+		os.system('ln -s "%s" "%s"' % (src, dst))
+	else:
+		os.symlink(source, destination)
+
 for filename in files:
     if True in [fnmatch(filename, pattern) for pattern in skip_list]:
         print 'Skipping %s' % filename
@@ -52,6 +58,6 @@ for filename in files:
 
     print 'Creating a link to %s at %s.' % (source, destination)
     if not options.dry:
-        os.symlink(source, destination)
+        create_symlink(source, destination)
 
 print 'Done.'
