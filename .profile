@@ -56,6 +56,8 @@ esac
 alias df='df -h'
 alias cgrep='grep -A 3 -B 3'
 
+export HISTTIMEFORMAT="%d.%m.%Y %H:%M:%S"
+PROMPT_COMMAND="history -a"
 shopt -s histappend
 
 RED="\e[31m\]"
