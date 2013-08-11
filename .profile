@@ -40,18 +40,22 @@ function to_win()
     "`cygpath -wa $1`"
 }
 
+ALIAS=
 case `uname` in
 Darwin)
-	. .alias.mac
+	ALIAS=.alias.mac
 	LSCOLORS=cxfxfhdxbxegedabagacad
 	;;
 *)
-	. .alias
+	ALIAS=.alias
 	LS_COLORS="di=32;40:ln=35;40:so=35;47:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:"
 	export LS_COLORS
 	;;
 esac
 
+if [[ -x "$HOME/$ALIAS" ]]; then
+	source "$HOME/$ALIAS"
+fi
 
 alias df='df -h'
 alias cgrep='grep -A 3 -B 3'
