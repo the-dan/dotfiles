@@ -1,0 +1,8 @@
+#!/bin/bash
+
+MPLAYER=$(which mplayer)
+if [[ -n "$MPLAYER" ]]; then
+    mplayer -loop 0 -really-quiet $HOME/bin/ring.mp3
+else
+    printf "\a\a\a"
+fi
