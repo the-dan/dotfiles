@@ -1,0 +1,18 @@
+#!/bin/bash
+
+SERVER_FILE=$HOME/.emacs.d/server/server
+FILE=$(cygpath -aw $1)
+
+
+if [[ -e $SERVER_FILE ]]; then
+  echo "client"
+  emacsclient -n -q "$FILE"
+  if [[ $? -gt 0 ]]; then
+	rm $SERVER_FILE
+	$EMACS_HOME/bin/emacs "$FILE" &
+  fi
+else
+  echo "normal"
+  $EMACS_HOME/bin/emacs "$FILE" &
+fi
+
