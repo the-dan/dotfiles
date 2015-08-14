@@ -45,6 +45,7 @@ case `uname` in
 Darwin)
 	ALIAS=.alias.mac
 	LSCOLORS=cxfxfhdxbxegedabagacad
+	export LSCOLORS
 	;;
 *)
 	ALIAS=.alias
@@ -86,3 +87,12 @@ else
 fi
 
 alias e='$EDITOR'
+
+##
+# Your previous /Users/dan/.profile file was backed up as /Users/dan/.profile.macports-saved_2015-08-14_at_18:22:45
+##
+
+# MacPorts Installer addition on 2015-08-14_at_18:22:45: adding an appropriate PATH variable for use with MacPorts.
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+# Finished adapting your PATH environment variable for use with MacPorts.
+
