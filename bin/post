@@ -1,9 +1,0 @@
-#!/bin/bash
-
-if [[ $# -lt 2 ]]; then
-	echo "usage: $0 <url> <file>"
-	echo "POSTs file to url"
-	exit 1
-fi
-
-curl -kvv -H "Expect:" -H "Content-Type: text/xml" --data @"$2" -X POST "$1"
