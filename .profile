@@ -96,3 +96,11 @@ alias e='$EDITOR'
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 # Finished adapting your PATH environment variable for use with MacPorts.
 
+setTerminalText () {
+    # echo works in bash & zsh
+    local mode=$1 ; shift
+    echo -ne "\033]$mode;$@\007"
+}
+term_name_both  () { setTerminalText 0 $@; }
+term_name_tab   () { setTerminalText 1 $@; }
+term_name_title () { setTerminalText 2 $@; }

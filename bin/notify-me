@@ -1,8 +1,18 @@
 #!/bin/bash
 
+RC=$?
+RESULT=OK
+if [[ ! $RC -eq 0 ]]; then
+	RESULT=FAIL
+fi
+
+
 MPLAYER=$(which mplayer)
+OSASCRIPT=$(which osascript)
 if [[ -n "$MPLAYER" ]]; then
     mplayer -loop 0 -really-quiet $HOME/bin/ring.mp3
+elif [[ -n "$OSASCRIPT" ]]; then
+	osascript -e "display notification \"Job is done ($RESULT)\" with title \"Job\""
 else
     printf "\a\a\a"
 fi
