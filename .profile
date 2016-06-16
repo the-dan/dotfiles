@@ -54,8 +54,8 @@ Darwin)
 	;;
 esac
 
-if [[ -x "$HOME/$ALIAS" ]]; then
-	source "$HOME/$ALIAS"
+if [[ -x "$ALIAS" ]]; then
+	source "$ALIAS"
 fi
 
 alias df='df -h'

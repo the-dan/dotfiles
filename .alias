@@ -1,7 +1,7 @@
 alias ll='ls -lh --color=tty'
 alias l.='ls -dh .* --color=tty'
 alias ls='ls -h --color=tty'
-
+alias l='ls -latrh'
 
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
 alias urldecode='python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1]);"'
