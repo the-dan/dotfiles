@@ -12,8 +12,7 @@ if [[ ! -f "$FILENAME" ]]; then
    exit -2
 fi
 
-# TODO: %z was here
-FILESIZE=$(stat --format %s "$FILENAME")
+FILESIZE=$(stat -f %z "$FILENAME")
 echo "Size of $FILENAME = $FILESIZE bytes"
 
 if [[ -z "$FILESIZE" ]]; then

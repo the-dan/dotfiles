@@ -1,0 +1,12 @@
+#!/bin/bash
+
+GOPATH=$(pwd)
+NAME=$(basename "$GOPATH")
+SRC="$GOPATH/src/github.com/the-dan/$NAME"
+mkdir -p $SRC
+cd $SRC
+git init
+git remote add origin https://github.com/the-dan/$NAME.git
+#git push -u origin master
+
+export GOPATH
